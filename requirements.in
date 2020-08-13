@@ -1,0 +1,6 @@
+Django
+djangorestframework
+django-filter
+zappa-django-utils
+whitenoise
+werkzeug

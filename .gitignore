@@ -1,0 +1,4 @@
+.serverless
+node_modules
+db.sqlite3
+staticfiles
