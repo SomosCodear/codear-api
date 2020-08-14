@@ -3,7 +3,6 @@ service: codear-api
 plugins:
   - serverless-python-requirements
   - serverless-wsgi
-  - serverless-dotenv-plugin
 
 resources:
   Resources:
