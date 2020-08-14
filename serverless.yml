@@ -43,6 +43,7 @@ functions:
     environment:
       SQLITE_BUCKET: ${self:custom.dbBucket}
       SERVERLESS_STAGE: ${self:custom.stage}
+      SECRET_KEY: ${env:SECRET_KEY}
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
