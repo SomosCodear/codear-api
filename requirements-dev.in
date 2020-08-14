@@ -2,3 +2,4 @@ pip-tools
 flake8
 flake8-commas
 mypy
+django-dotenv
