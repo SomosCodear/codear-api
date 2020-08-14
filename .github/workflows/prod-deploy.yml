@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Install node dependencies
-        run: npm ci
+        run: yarn --frozen-lockfile
       - name: Install python dependencies
         run: pip install -r requirements.txt
       - name: Deploy to Prod
