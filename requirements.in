@@ -5,3 +5,4 @@ zappa-django-utils
 whitenoise
 werkzeug
 django-dotenv
+django-cors-headers
