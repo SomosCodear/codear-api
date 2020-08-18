@@ -8,10 +8,10 @@ asgiref==3.2.10           # via django
 django-cors-headers==3.4.0  # via -r requirements.in
 django-dotenv==1.4.2      # via -r requirements.in
 django-filter==2.3.0      # via -r requirements.in
-django==3.1               # via -r requirements.in, django-cors-headers, django-filter, djangorestframework, zappa-django-utils
+django-s3-sqlite==0.0.3   # via -r requirements.in
+django==3.1               # via -r requirements.in, django-cors-headers, django-filter, django-s3-sqlite, djangorestframework
 djangorestframework==3.11.1  # via -r requirements.in
 pytz==2020.1              # via django
 sqlparse==0.3.1           # via django
 werkzeug==1.0.1           # via -r requirements.in
 whitenoise==5.2.0         # via -r requirements.in
-zappa-django-utils==0.4.1  # via -r requirements.in

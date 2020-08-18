@@ -1,8 +1,8 @@
 Django
 djangorestframework
 django-filter
-zappa-django-utils
 whitenoise
 werkzeug
 django-dotenv
 django-cors-headers
+django-s3-sqlite

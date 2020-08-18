@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_s3_sqlite',
     'corsheaders',
     'django_filters',
     'rest_framework',
@@ -100,7 +101,7 @@ if DEBUG:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
+            'ENGINE': 'django_s3_sqlite',
             'NAME': 'sqlite.db',
             'BUCKET': SQLITE_BUCKET,
         },
