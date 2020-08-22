@@ -6,3 +6,4 @@ werkzeug
 django-dotenv
 django-cors-headers
 django-s3-sqlite
+django-import-export

@@ -1,5 +1,20 @@
 from django.contrib import admin
+from import_export import resources, admin as import_export_admin
 from . import models
 
 
-admin.site.register(models.Event)
+class EventResource(resources.ModelResource):
+    class Meta:
+        model = models.Event
+        import_id_fields = ('name', 'date')
+        fields = ('name', 'date', 'street', 'city', 'country', 'link')
+        widgets = {
+            'date': {'format': '%Y-%m-%dT%H:%M:%S.%fZ'},
+        }
+
+
+class EventAdmin(import_export_admin.ImportExportModelAdmin):
+    resource_class = EventResource
+
+
+admin.site.register(models.Event, EventAdmin)

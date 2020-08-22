@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_s3_sqlite',
     'corsheaders',
+    'import_export',
     'django_filters',
     'rest_framework',
     'events',
