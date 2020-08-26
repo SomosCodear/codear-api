@@ -15,6 +15,8 @@ class EventResource(resources.ModelResource):
 
 class EventAdmin(import_export_admin.ImportExportModelAdmin):
     resource_class = EventResource
+    list_display = ('name', 'date', 'link')
+    ordering = ('-date',)
 
 
 admin.site.register(models.Event, EventAdmin)
