@@ -12,3 +12,17 @@ class EventViewset(viewsets.ReadOnlyModelViewSet):
     @method_decorator(cache_page(60 * 60 * 24))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+    def check_filter_present(self, query_param):
+        return self.request.query_params.get(query_param, '').strip() != ''
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        if self.action == 'list' and not (
+            self.check_filter_present('year') and self.check_filter_present('month')
+            or self.check_filter_present('upcoming')
+        ):
+            queryset = queryset.none()
+
+        return queryset
