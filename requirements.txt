@@ -5,6 +5,8 @@
 #    pip-compile requirements.in
 #
 asgiref==3.2.10           # via django
+certifi==2020.11.8        # via requests
+chardet==3.0.4            # via requests
 defusedxml==0.6.0         # via odfpy
 diff-match-patch==20200713  # via django-import-export
 django-cors-headers==3.4.0  # via -r requirements.in
@@ -15,14 +17,17 @@ django-s3-sqlite==0.0.3   # via -r requirements.in
 django==3.1               # via -r requirements.in, django-cors-headers, django-filter, django-import-export, django-s3-sqlite, djangorestframework
 djangorestframework==3.11.1  # via -r requirements.in
 et-xmlfile==1.0.1         # via openpyxl
+idna==2.10                # via requests
 jdcal==1.4.1              # via openpyxl
 markuppy==1.14            # via tablib
 odfpy==1.4.1              # via tablib
 openpyxl==3.0.5           # via tablib
 pytz==2020.1              # via django
 pyyaml==5.3.1             # via tablib
+requests==2.25.0          # via -r requirements.in
 sqlparse==0.3.1           # via django
 tablib[html,ods,xls,xlsx,yaml]==2.0.0  # via django-import-export
+urllib3==1.26.2           # via requests
 werkzeug==1.0.1           # via -r requirements.in
 whitenoise==5.2.0         # via -r requirements.in
 xlrd==1.2.0               # via tablib

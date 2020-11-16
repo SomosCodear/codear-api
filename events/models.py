@@ -8,6 +8,7 @@ class Event(models.Model):
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=100, default='Argentina')
     link = models.URLField()
+    external_reference = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.name
