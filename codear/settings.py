@@ -152,7 +152,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 SERVERLESS_STAGE = os.getenv('SERVERLESS_STAGE')
-STATIC_URL = f'{SERVERLESS_STAGE}/static' if SERVERLESS_STAGE is not None else'/static/'
+STATIC_URL = f'{SERVERLESS_STAGE}/static/' if SERVERLESS_STAGE is not None else'/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 WHITENOISE_STATIC_PREFIX = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
