@@ -47,3 +47,14 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+  fetch_events:
+    handler: lambda_manage.handler
+    environment:
+      SQLITE_BUCKET: ${self:custom.dbBucket}
+      SERVERLESS_STAGE: ${self:custom.stage}
+      SECRET_KEY: ${env:SECRET_KEY}
+    events:
+      - schedule:
+          rate: cron(0 2 * * ? *)
+          input:
+            command: fetch_events
