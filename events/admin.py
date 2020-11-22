@@ -19,4 +19,9 @@ class EventAdmin(import_export_admin.ImportExportModelAdmin):
     ordering = ('-date',)
 
 
+class CommuntityEventSourceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'source')
+
+
 admin.site.register(models.Event, EventAdmin)
+admin.site.register(models.CommunityEventSource, CommuntityEventSourceAdmin)
