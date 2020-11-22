@@ -7,7 +7,7 @@ class EventResource(resources.ModelResource):
     class Meta:
         model = models.Event
         import_id_fields = ('name', 'date')
-        fields = ('name', 'date', 'street', 'city', 'country', 'link')
+        fields = ('name', 'date', 'street', 'city', 'country', 'link', 'external_reference')
         widgets = {
             'date': {'format': '%Y-%m-%dT%H:%M:%S.%fZ'},
         }
@@ -15,7 +15,8 @@ class EventResource(resources.ModelResource):
 
 class EventAdmin(import_export_admin.ImportExportModelAdmin):
     resource_class = EventResource
-    list_display = ('name', 'date', 'link')
+    list_display = ('name', 'date', 'link', 'source')
+    list_filter = ('source', 'date')
     ordering = ('-date',)
 
 

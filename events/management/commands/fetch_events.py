@@ -8,15 +8,14 @@ class Command(BaseCommand):
     help = 'Fetches events from external sources'
 
     async def _fetch_source_events(self, community_source: models.CommunityEventSource) -> typing.List[models.Event]:
-        source = community_source.get_event_source()
         source_events: typing.List[models.Event] = []
 
         try:
-            self.stdout.write(f'Fetching events from {source}...')
-            source_events = source.get_new_events()
-            self.stdout.write(self.style.SUCCESS(f'Successfully fetched {len(source_events)} events from {source}'))
+            self.stdout.write(f'Fetching events from {community_source}...')
+            source_events = community_source.fetch_events()
+            self.stdout.write(self.style.SUCCESS(f'Successfully fetched {len(source_events)} events from {community_source}'))
         except Exception as error:
-            self.stderr.write(self.style.ERROR(f'Error while processing {source}: {error}'))
+            self.stderr.write(self.style.ERROR(f'Error while processing {community_source}: {error}'))
 
         return source_events
 

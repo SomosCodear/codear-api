@@ -1,4 +1,5 @@
 import json
+import typing
 from django.db import models
 from . import sources
 
@@ -10,10 +11,16 @@ class Event(models.Model):
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=100, default='Argentina')
     link = models.URLField()
-    external_reference = models.CharField(max_length=255, null=True)
+    external_reference = models.CharField(max_length=255, null=True, blank=True)
+    source = models.ForeignKey(
+        'CommunityEventSource',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
-        return self.name
+        return self.name + f' - {self.source}' if self.source is not None else ''
 
 
 class CommunityEventSource(models.Model):
@@ -29,7 +36,7 @@ class CommunityEventSource(models.Model):
     def __str__(self):
         return f'{self.name} ({self.source})'
 
-    def get_event_source(self) -> sources.EventSource:
+    def _get_event_source(self) -> sources.EventSource:
         EventSourceClass = sources.all_sources[self.source]
 
         try:
@@ -38,3 +45,16 @@ class CommunityEventSource(models.Model):
             params = {}
 
         return EventSourceClass(**params)
+
+    def fetch_events(self) -> typing.List[Event]:
+        source = self._get_event_source()
+        events: typing.List[Event] = []
+
+        for raw_event in source.get_new_events():
+            event = Event(
+                source=self,
+                **raw_event,
+            )
+            events.append(event)
+
+        return events
