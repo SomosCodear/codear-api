@@ -1,5 +1,6 @@
 from __future__ import annotations
 import abc
+import typing
 from events import models
 
 __all__ = ['EventSource']
@@ -15,5 +16,5 @@ class EventSource(abc.ABC):
     return cls.SOURCE_NAME
 
   @abc.abstractmethod
-  def get_new_events(self) -> models.Event:
+  def get_new_events(self) -> typing.List[models.Event]:
     pass
