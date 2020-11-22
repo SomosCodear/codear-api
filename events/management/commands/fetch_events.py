@@ -12,10 +12,9 @@ class Command(BaseCommand):
       for community_source in models.CommunityEventSource.objects.all():
         source = community_source.get_event_source()
 
-        source_name = source.get_source_name()
-        self.stdout.write(f'Fetching events from {source_name}...')
+        self.stdout.write(f'Fetching events from {source}...')
         source_events = source.get_new_events()
-        self.stdout.write(self.style.SUCCESS(f'Successfully fetched {len(source_events)} events from {source_name}'))
+        self.stdout.write(self.style.SUCCESS(f'Successfully fetched {len(source_events)} events from {source}'))
 
         new_events.extend(source_events)
 

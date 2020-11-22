@@ -31,3 +31,5 @@ class FrontendCafeEventSource(base.EventSource):
 
     return events
 
+  def __str__(self):
+    return self.SOURCE_NAME

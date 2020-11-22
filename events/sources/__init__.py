@@ -1,5 +1,6 @@
 from .base import EventSource
 from .frontendcafe import *
+from .meetup import *
 
 __all__ = [
   'EventSource',
