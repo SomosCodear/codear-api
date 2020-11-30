@@ -1,13 +1,16 @@
+from __future__ import annotations
 from .base import EventSource
-from .frontendcafe import *
-from .meetup import *
+from .frontendcafe import FrontendCafeEventSource
+from .meetup import MeetupEventSource
 
 __all__ = [
     'EventSource',
+    'FrontendCafeEventSource',
+    'MeetupEventSource',
     'all_sources',
 ]
 
 all_sources = {
-    source.get_source_id(): source
-    for source in EventSource.__subclasses__()
+    FrontendCafeEventSource.get_source_id(): FrontendCafeEventSource,
+    MeetupEventSource.get_source_id(): MeetupEventSource,
 }

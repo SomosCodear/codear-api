@@ -36,7 +36,7 @@ class CommunityEventSource(models.Model):
     def __str__(self):
         return f'{self.name} ({self.source})'
 
-    def _get_event_source(self) -> sources.EventSource:
+    def _get_event_source(self):
         EventSourceClass = sources.all_sources[self.source]
 
         try:
@@ -46,15 +46,15 @@ class CommunityEventSource(models.Model):
 
         return EventSourceClass(**params)
 
-    def fetch_events(self) -> typing.List[Event]:
+    def fetch_events(self):
         source = self._get_event_source()
-        events: typing.List[Event] = []
+        events: typing.List[typing.Dict[str, typing.Any]] = []
 
         for raw_event in source.get_new_events():
-            event = Event(
-                source=self,
+            event = {
                 **raw_event,
-            )
+                'source': self,
+            }
             events.append(event)
 
         return events

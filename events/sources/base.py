@@ -6,6 +6,12 @@ __all__ = ['EventSource']
 
 
 class EventSource(abc.ABC):
+    SOURCE_ID: str
+    SOURCE_NAME: str
+
+    def __init__(self):
+        pass
+
     @classmethod
     def get_source_id(cls):
         return cls.SOURCE_ID
@@ -15,5 +21,5 @@ class EventSource(abc.ABC):
         return cls.SOURCE_NAME
 
     @abc.abstractmethod
-    def get_new_events(self) -> typing.List[typing.Dict]:
+    def get_new_events(self) -> typing.List[typing.Dict[str, typing.Any]]:
         pass

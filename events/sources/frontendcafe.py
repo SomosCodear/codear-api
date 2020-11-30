@@ -12,10 +12,10 @@ class FrontendCafeEventSource(base.EventSource):
     SOURCE_NAME = 'Frontend Cafe'
     API_URL = 'https://frontend.cafe/api/events'
 
-    def get_new_events(self) -> typing.List[typing.Dict]:
-        request = requests.get(self.API_URL)
-        result = request.json()
-        events: typing.List[typing.Dict] = []
+    def get_new_events(self) -> typing.List[typing.Dict[str, typing.Any]]:
+        request = requests.get(self.API_URL) # type: ignore
+        result: typing.List[typing.Dict[str, typing.Any]] = request.json() # type: ignore
+        events: typing.List[typing.Dict[str, typing.Any]] = []
 
         for fe_event in result:
             event = {
