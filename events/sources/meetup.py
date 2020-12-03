@@ -25,8 +25,8 @@ class MeetupEventSource(base.EventSource):
     for meetup_event in result:
       event = {
         'name': meetup_event['name'],
-        'date': timezone.make_aware(timezone.datetime.utcfromtimestamp(meetup_event['time'])),
-        'street': meetup_event['venue']['name'],
+        'date': timezone.make_aware(timezone.datetime.utcfromtimestamp(meetup_event['time'] / 1000)),
+        'street': meetup_event.get('venue', { 'name': 'TBD' })['name'],
         'city': meetup_event['group']['localized_location'],
         'link': meetup_event['link'],
         'external_reference': meetup_event['id'],
