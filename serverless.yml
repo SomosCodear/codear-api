@@ -49,6 +49,7 @@ functions:
       - http: 'ANY {proxy+}'
   fetch_events:
     handler: lambda_manage.handler
+    timeout: 60
     environment:
       SQLITE_BUCKET: ${self:custom.dbBucket}
       SERVERLESS_STAGE: ${self:custom.stage}
